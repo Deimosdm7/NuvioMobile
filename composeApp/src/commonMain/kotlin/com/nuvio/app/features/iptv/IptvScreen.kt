@@ -68,7 +68,7 @@ fun IptvScreen(
             Text(warning, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
         }
         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            items(playlist.channels, key = { it.streamUrl }) { channel ->
+            items(playlist.channels) { channel ->
                 Card(
                     modifier = Modifier.fillMaxWidth().clickable { onPlayChannel(channel) },
                 ) {
