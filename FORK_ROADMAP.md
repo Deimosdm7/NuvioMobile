@@ -68,6 +68,10 @@ Foi adicionado um parser M3U/M3U8 independente de plataforma em `features/iptv/M
 - [ ] Definir identidade visual e identificador próprios.
 - [ ] Validar build Android e testes.
 
+## Validação da primeira aba IPTV
+
+A primeira integração visual está no branch de desenvolvimento. A validação de compilação Android ainda precisa ser concluída pelo workflow de CI antes de distribuir um APK.
+
 ## Nota
 
 Este roadmap descreve objetivos, não afirma que esses recursos novos já estejam implementados. O código original continua sendo a base até que cada mudança seja desenvolvida e validada.
