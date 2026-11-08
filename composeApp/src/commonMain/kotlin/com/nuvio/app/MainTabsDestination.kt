@@ -151,7 +151,7 @@ internal fun MainTabsDestination(
                         NavItem(
                             selected = selectedTab == AppScreenTab.Tv,
                             onClick = { onTabSelected(AppScreenTab.Tv) },
-                            icon = Icons.Filled.LiveTv,
+                            icon = Icons.Filled.Home,
                             contentDescription = "TV",
                         )
                         NavItem(
