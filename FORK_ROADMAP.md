@@ -51,13 +51,20 @@ Este repositório é um fork comunitário e independente do Nuvio Mobile. A inte
 4. **Integração gradual:** adicionar os módulos restantes em mudanças isoladas.
 5. **Validação:** executar testes e build Android antes de publicar APKs.
 
+## Implementação IPTV — primeira etapa
+
+Foi adicionado um parser M3U/M3U8 independente de plataforma em `features/iptv/M3uPlaylistParser.kt`. Ele lê canais, URLs, `tvg-id`, `tvg-name`, `tvg-logo`, `group-title` e `#EXTGRP`, preservando atributos adicionais e avisando sobre entradas sem URL. Testes comuns cobrem metadados, nomes com vírgulas, BOM/CRLF, comentários e entradas incompletas. Esta etapa ainda não cria uma tela IPTV nem reproduz canais; a integração visual e o uso do player existente vêm nas próximas etapas.
+
 ## Estado
 
 - [x] Fork criado em `Deimosdm7/NuvioMobile`.
 - [x] Roadmap inicial registrado.
-- [ ] Auditoria detalhada dos recursos existentes.
+- [x] Auditoria inicial da navegação, player e estrutura de módulos: a base já possui navegação por abas e player reutilizável.
+- [x] Implementar a primeira peça funcional de IPTV: parser M3U/M3U8 multiplataforma com testes comuns.
+- [ ] Integrar a aba IPTV à navegação principal sem remover Home, Search, Library ou Settings.
+- [ ] Implementar gerenciamento de listas e persistência local segura.
+- [ ] Integrar EPG/XMLTV e, em etapas posteriores, Xtream Codes e Stalker Portal.
 - [ ] Definir identidade visual e identificador próprios.
-- [ ] Selecionar e implementar a primeira melhoria funcional.
 - [ ] Validar build Android e testes.
 
 ## Nota
