@@ -96,5 +96,5 @@ object M3uPlaylistParser {
         val attributes: Map<String, String>,
     )
 
-    private val ATTRIBUTE_REGEX = Regex("""([\\w-]+)\\s*=\\s*(?:"([^"]*)"|([^\\s,]*))""")
+    private val ATTRIBUTE_REGEX = Regex("""([\w-]+)\s*=\s*(?:"([^"]*)"|([^\s,]*))""")
 }
