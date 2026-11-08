@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -30,6 +31,7 @@ import com.nuvio.app.core.ui.NuvioClassicNavigationBar
 import com.nuvio.app.core.ui.FloatingNavigationBar
 import com.nuvio.app.core.ui.FloatingNavigationItem
 import com.nuvio.app.core.ui.PlatformBackHandler
+import com.nuvio.app.core.ui.NativeTabBridge
 import com.nuvio.app.core.ui.rememberNuvioNavBarScrollState
 import com.nuvio.app.features.profiles.NuvioProfile
 import com.nuvio.app.features.profiles.ProfileSwitcherTab
@@ -70,11 +72,14 @@ internal fun MainTabsDestination(
         val isTabletLayout = useTabletFloatingTabBar || maxWidth >= 768.dp
         val tabActions = remember(actions, isTabletLayout) { actions(isTabletLayout) }
         val useNativeBottomTabs = if (useNativeNavigation) {
-            useNativeTabBar
+            useNativeTabBar && selectedTab != AppScreenTab.Tv
         } else {
-            liquidGlassNativeTabBarSupported && liquidGlassNativeTabBarEnabled && initialHomeReady
+            liquidGlassNativeTabBarSupported && liquidGlassNativeTabBarEnabled && initialHomeReady && selectedTab != AppScreenTab.Tv
         }
         val tabsRouteActive = rootRouteActive
+        SideEffect {
+            NativeTabBridge.publishTabBarVisible(tabsRouteActive && selectedTab != AppScreenTab.Tv)
+        }
         val navBarScrollState = rememberNuvioNavBarScrollState()
         val navBarHazeState = rememberHazeState()
         val navBarStyleSetting by remember { ThemeSettingsRepository.navBarStyle }.collectAsStateWithLifecycle()
