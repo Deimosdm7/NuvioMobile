@@ -28,7 +28,7 @@ fun IptvScreen(
     modifier: Modifier = Modifier,
 ) {
     var playlistText by rememberSaveable { mutableStateOf("") }
-    var playlist by rememberSaveable { mutableStateOf(M3uPlaylist(emptyList())) }
+    var playlist by remember { mutableStateOf(M3uPlaylist(emptyList())) }
     var error by rememberSaveable { mutableStateOf<String?>(null) }
 
     Column(
