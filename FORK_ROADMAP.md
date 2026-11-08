@@ -53,7 +53,7 @@ Este repositório é um fork comunitário e independente do Nuvio Mobile. A inte
 
 ## Implementação IPTV — primeira etapa
 
-Foi adicionado um parser M3U/M3U8 independente de plataforma em `features/iptv/M3uPlaylistParser.kt`. Ele lê canais, URLs, `tvg-id`, `tvg-name`, `tvg-logo`, `group-title` e `#EXTGRP`, preservando atributos adicionais e avisando sobre entradas sem URL. Testes comuns cobrem metadados, nomes com vírgulas, BOM/CRLF, comentários e entradas incompletas. Esta etapa ainda não cria uma tela IPTV nem reproduz canais; a integração visual e o uso do player existente vêm nas próximas etapas.
+Foi adicionado um parser M3U/M3U8 independente de plataforma em `features/iptv/M3uPlaylistParser.kt`. Ele lê canais, URLs, `tvg-id`, `tvg-name`, `tvg-logo`, `group-title` e `#EXTGRP`, preservando atributos adicionais e avisando sobre entradas sem URL. Testes comuns cobrem metadados, nomes com vírgulas, BOM/CRLF, comentários e entradas incompletas. Também foi criada uma primeira tela IPTV: ela aceita conteúdo M3U colado, lista os canais identificados e encaminha o canal selecionado ao player interno já existente. Esta etapa ainda não faz download de listas por URL nem salva fontes entre reinicializações.
 
 ## Estado
 
@@ -61,7 +61,8 @@ Foi adicionado um parser M3U/M3U8 independente de plataforma em `features/iptv/M
 - [x] Roadmap inicial registrado.
 - [x] Auditoria inicial da navegação, player e estrutura de módulos: a base já possui navegação por abas e player reutilizável.
 - [x] Implementar a primeira peça funcional de IPTV: parser M3U/M3U8 multiplataforma com testes comuns.
-- [ ] Integrar a aba IPTV à navegação principal sem remover Home, Search, Library ou Settings.
+- [x] Integrar uma aba IPTV inicial à navegação Compose, preservando Home, Search, Library e Settings.
+- [ ] Ampliar a importação para URL/arquivo e validar a integração com diferentes formatos de stream.
 - [ ] Implementar gerenciamento de listas e persistência local segura.
 - [ ] Integrar EPG/XMLTV e, em etapas posteriores, Xtream Codes e Stalker Portal.
 - [ ] Definir identidade visual e identificador próprios.
