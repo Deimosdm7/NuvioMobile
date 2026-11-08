@@ -49,7 +49,7 @@ fun IptvScreen(
             minLines = 4,
             maxLines = 7,
             label = { Text("Conteúdo da lista M3U") },
-            placeholder = { Text("#EXTM3U\\n#EXTINF:-1,Canal\\nhttps://...") },
+            placeholder = { Text("#EXTM3U\n#EXTINF:-1,Canal\nhttps://...") },
         )
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Button(onClick = {
