@@ -139,6 +139,7 @@ import com.nuvio.app.features.player.recordExternalPlaybackProgress
 import com.nuvio.app.features.player.ExternalPlayerPlatform
 import com.nuvio.app.features.player.PlayerLaunch
 import com.nuvio.app.features.player.PlayerLaunchStore
+import com.nuvio.app.features.iptv.IptvChannel
 import com.nuvio.app.features.player.PlayerSettingsRepository
 import com.nuvio.app.features.player.SubtitleLanguageOption
 import com.nuvio.app.features.player.prepareExternalPlayerLaunch
@@ -421,6 +422,7 @@ internal fun MainAppContent(
                 searchScrollToTopRequests.tryEmit(Unit)
             }
             AppScreenTab.Library -> libraryScrollToTopRequests.tryEmit(Unit)
+            AppScreenTab.Tv -> Unit
             AppScreenTab.Settings -> settingsRootActionRequests.tryEmit(Unit)
         }
     }
@@ -1374,6 +1376,23 @@ internal fun MainAppContent(
                         actions = { isTabletLayout ->
                             AppTabActions(
                                 onCatalogClick = onCatalogClick,
+                                onPlayIptvChannel = { channel ->
+                                    val launch = PlayerLaunch(
+                                        profileId = activePlaybackProfileId,
+                                        title = channel.name,
+                                        sourceUrl = channel.streamUrl,
+                                        streamType = "m3u",
+                                        streamTitle = channel.name,
+                                        streamSubtitle = channel.groupTitle,
+                                        providerName = "IPTV",
+                                        contentType = "iptv",
+                                        parentMetaId = channel.tvgId?.takeIf { it.isNotBlank() } ?: channel.streamUrl,
+                                        parentMetaType = "iptv",
+                                        logo = channel.logoUrl,
+                                    )
+                                    val launchId = PlayerLaunchStore.put(launch)
+                                    navController.navigate(PlayerRoute(launchId = launchId, title = launch.title))
+                                },
                                 onPosterClick = navController::openPreview,
                                 onPosterLongClick = { meta ->
                                     openPosterActions(PosterActionTarget(preview = meta))
