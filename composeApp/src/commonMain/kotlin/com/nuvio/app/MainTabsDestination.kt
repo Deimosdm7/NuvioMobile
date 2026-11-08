@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.LiveTv
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -102,7 +101,7 @@ internal fun MainTabsDestination(
             FloatingNavigationItem(
                 selected = selectedTab == AppScreenTab.Tv,
                 onClick = { onTabSelected(AppScreenTab.Tv) },
-                icon = Icons.Filled.LiveTv,
+                icon = Icons.Filled.Home,
                 label = "TV",
             ),
             FloatingNavigationItem(
